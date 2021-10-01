@@ -14,18 +14,124 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #dae8fc  ;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  border: 1px solid #a8bedf !important;
+  text-align: end;
+  
+}
+
+img {
+  height: 70%;
+  object-fit: contain
+}
+
+.App-header-text{
+  margin-left: 1vh;
+}
+.App-body {
+  background-color: #d5e8d4  ;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 82vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   font-size: calc(10px + 2vmin);
-  color: white;
+  border: 1px solid #c2dbb7 !important;
+  overflow: auto;
+}
+
+.App-item {
+  background-color: #f2f8f2;
+  border: 1px solid #686f68;
+  width: 20vw;
+  font-size: calc(6px + 2vmin);
+}
+
+.App-item-void {
+  width: 20vw;
+  font-size: calc(6px + 2vmin);
+}
+
+.App-search{
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  margin-top: 1vh;
+  margin-left: -1vh;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: -2vh;
+  align-items: center;
+}
+
+.body-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95vw;
+  height: 30vh;
+  margin-top: 7vh;
+}
+.img-container{
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.item-title{
+  display: inline-block;
+  width: 19vW;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  margin-top: 1vh
+}
+.search-input{
+  width: 15vw;
+  height: 5vh;
+  background-color: #f8cecc;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* webkit solution */
+::-webkit-input-placeholder { text-align:right; }
+/* mozilla solution */
+input:-moz-placeholder { text-align:right; }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: black;
+  opacity: 1;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: black;
+  opacity: 1;
 }
 
 @keyframes App-logo-spin {
