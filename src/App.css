@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+.app-header {
   background-color: #dae8fc  ;
   margin-top: 2vh;
   margin-left: 1vw;
@@ -25,7 +25,26 @@
   font-size: calc(10px + 2vmin);
   border: 1px solid #a8bedf !important;
   text-align: end;
-  
+}
+.app-header-beauty {
+  background-color: #dae8fc  ;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  border-radius: 10px;
+  border: 1px solid #a8bedf !important;
+  text-align: end;
+}
+
+.beauty-butttons-container{
+  display: flex;
+  flex-direction: row;
+  margin-right: 2vw;
 }
 
 img {
@@ -33,11 +52,11 @@ img {
   object-fit: contain
 }
 
-.App-header-text{
+.app-header-text{
   margin-left: 3vh;
   cursor: pointer;
 }
-.App-body {
+.app-body {
   background-color: #d5e8d4  ;
   margin-top: 2vh;
   margin-left: 1vw;
@@ -48,6 +67,20 @@ img {
   font-size: calc(10px + 2vmin);
   border: 1px solid #c2dbb7 !important;
   overflow: auto;
+}
+
+.app-body-beauty {
+  background-color: #d5e8d4  ;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 82vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  border: 1px solid #c2dbb7 !important;
+  overflow: auto;
+  border-radius: 10px;
 }
 
 .App-item {
@@ -161,6 +194,7 @@ img {
   flex-direction: row;
   cursor: pointer;
   margin-right: 2vw;
+  margin-left: 2vw;
 }
 
 .color-button{

@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from './components/Header'
 import { ItemList } from './components/ItemList'
 import { ItemDescription } from './components/ItemDescription'
+
 // import logo from './logo.svg';
 
 
@@ -9,7 +10,9 @@ export class Workspace extends React.Component {
     constructor() {
       super();
       this.state = {
-        cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : 0
+        cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : 0,
+
+        beautify: localStorage.getItem("beautify") ? JSON.parse(localStorage.getItem("beautify")) : false,
       };
     }
     componentDidUpdate = () => {
@@ -24,6 +27,10 @@ export class Workspace extends React.Component {
         localStorage.setItem('date', new Date() * 1) 
       }
     }
+    setBeautify = (beautify) => {
+      this.setState({beautify})
+      localStorage.setItem('beautify', beautify);
+    }
     setDataShouldRefresh = (should) => {
       this.setState({dataShouldRefresh: should})
     }
@@ -35,14 +42,36 @@ export class Workspace extends React.Component {
       this.setState({cart})
       localStorage.setItem('cart', cart);
     }
+    handleOnSearch = (searchText) => {
+      this.setState({ searchText })
+  }
     render() {
       return (
         <div>
-            <Header setSelectedItem={this.setSelectedItem} selectedItem={this.state.selectedItem} cart={this.state.cart} />
+            <Header 
+              beautify={this.state.beautify} 
+              setSelectedItem={this.setSelectedItem} 
+              selectedItem={this.state.selectedItem} 
+              cart={this.state.cart} 
+              setBeautify={this.setBeautify} 
+              handleOnSearch={this.handleOnSearch}
+              searchText={this.state.searchText}
+            />
             {
                 !this.state.selectedItem 
-                    ? <ItemList setSelectedItem={this.setSelectedItem} setDataShouldRefresh={this.setDataShouldRefresh} dataShouldRefresh={this.state.dataShouldRefresh}/>
-                    : <ItemDescription setSelectedItem={this.setSelectedItem} selectedItem={this.state.selectedItem} setCart={this.setCart}/> 
+                    ? <ItemList 
+                        beautify={this.state.beautify} 
+                        setSelectedItem={this.setSelectedItem} 
+                        setDataShouldRefresh={this.setDataShouldRefresh} 
+                        dataShouldRefresh={this.state.dataShouldRefresh}
+                        handleOnSearch={this.handleOnSearch}
+                        searchText={this.state.searchText}
+                      />
+                    : <ItemDescription 
+                        setSelectedItem={this.setSelectedItem} 
+                        selectedItem={this.state.selectedItem} 
+                        setCart={this.setCart}
+                      /> 
             }
         </div>
     
