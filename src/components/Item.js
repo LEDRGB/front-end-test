@@ -3,12 +3,15 @@ import React from 'react';
 export class Item extends React.Component {
     constructor() {
       super();
-      this.state = {color: "red"};
+      this.state = {};
+    }
+    setSelectedItem = () => {
+        this.props.setSelectedItem(this.props.item)
     }
     render() {
         const item = this.props.item
         return (
-        <div className={item ? "App-item": "App-item-void"}>
+        <div className={item ? "App-item": "App-item-void"} onClick={item && this.setSelectedItem }>
             {item && 
                 <>
                     <div className="item-title">

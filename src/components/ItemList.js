@@ -11,11 +11,12 @@ export class ItemList extends React.Component {
     }
 
     componentDidMount() {
-        !this.state.items.length && fetch('https://front-test-api.herokuapp.com/api/product')
+        (!this.state.items.length || this.props.dataShouldRefresh) && fetch('https://front-test-api.herokuapp.com/api/product')
             .then(response => response.json())
             .then(data => {
                 this.setState({ items: data });
                 localStorage.setItem('items', JSON.stringify(data));
+                this.props.setDataShouldRefresh(false)
             });
     }
 
@@ -27,16 +28,15 @@ export class ItemList extends React.Component {
                 return item.brand.toLowerCase().includes(searchText.toLowerCase()) || item.model.toLowerCase().includes(searchText);
             })
         }
-        preapredItems = preapredItems.map(item => <Item item={item}/>)
+        preapredItems = preapredItems.map((item) => <Item item={item} setSelectedItem={this.props.setSelectedItem} key={'item-'+item.model}/>)
         for(let i = preapredItems.length % 4; i<4; i++){
-            preapredItems.push(<Item />)
+            preapredItems.push(<Item key={Math.random()}/>)
         }
-        console.log(preapredItems, 'cosa')
         const rows = preapredItems.length / 4; 
         const ret = []
         for(let i = 0; i <rows; i++){
             ret.push(
-                <div className='body-row'>
+                <div className='body-row' key={'row-' + i}>
                     {preapredItems.slice(i*4, (i*4+4))}
                 </div>
             )
