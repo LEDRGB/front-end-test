@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import { HideUntilLoaded } from 'react-animation'
+import loading from '../assets/loading.jpg'
 
 import Typography from '@mui/material/Typography';
 
@@ -30,7 +31,6 @@ export class ItemList extends React.Component {
                 this.props.setDataShouldRefresh(false)
             });
     }
-
     generateGrid = (items) =>{
         let preapredItems = items
         const searchText = this.props.searchText
@@ -82,8 +82,8 @@ export class ItemList extends React.Component {
                         component="img"
                         height="14"
                         style={styles.media}
-                        image={item.imgUrl}
-                        alt="green iguana"
+                        image={item.imgUrl ? item.imgUrl: loading}
+                        //image={loading}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
@@ -110,25 +110,31 @@ export class ItemList extends React.Component {
             )
         }
         return ret;
+        
 
+    }
+
+    manageUgly = () => {
+        return <div className="app-body">
+                        <header>
+                            <Search handleOnChange={this.props.handleOnSearch}/>
+                        </header>
+                    <div className="body-container">
+                        {this.generateGrid(this.state.items)}
+                    </div>
+                </div> 
+    }
+
+    manageBeauty = () => {
+        return  <div className="app-body-beauty" style={ style }>
+                    <div className="body-container">
+                        {this.generateBeautyGrid(this.state.items)}
+                    </div>
+                </div> 
+          
     }
     
     render() {
-      return (
-        !this.props.beautify 
-            ? <div className="app-body">
-                    <header>
-                        <Search handleOnChange={this.props.handleOnSearch}/>
-                    </header>
-                <div className="body-container">
-                    {this.generateGrid(this.state.items)}
-                </div>
-            </div> 
-            : <div className="app-body-beauty" style={ style }>
-                <div className="body-container">
-                    {this.generateBeautyGrid(this.state.items)}
-                </div>
-            </div> 
-      )
+      return !this.props.beautify ? this.manageUgly() : this.manageBeauty()
     }
 }

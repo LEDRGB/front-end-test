@@ -12,7 +12,7 @@ export class Workspace extends React.Component {
       super();
       this.state = {
         cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : 0,
-
+        selectedItem: localStorage.getItem("selectedItem") !== 'undefined' ? JSON.parse(localStorage.getItem("selectedItem")) : undefined,
         beautify: localStorage.getItem("beautify") ? JSON.parse(localStorage.getItem("beautify")) : false,
       };
     }
@@ -28,14 +28,22 @@ export class Workspace extends React.Component {
       }
     }
     setBeautify = (beautify) => {
-      this.setState({beautify})
-      localStorage.setItem('beautify', beautify);
+      if(beautify){
+        localStorage.setItem('beautify', beautify);
+        window.location.reload();
+
+      }else{
+        localStorage.setItem('beautify', beautify);
+        this.setState({beautify})
+      }
     }
     setDataShouldRefresh = (should) => {
       this.setState({dataShouldRefresh: should})
     }
     setSelectedItem = (item) => {
         this.setState({selectedItem: item })
+        localStorage.setItem('selectedItem', JSON.stringify(item));
+
     }
     setCart = (items) => {
       const cart = items >1 ? items : this.state.cart + 1
@@ -90,7 +98,7 @@ export class Workspace extends React.Component {
                           handleOnSearch={this.handleOnSearch}
                           searchText={this.state.searchText}
                         />
-                      : <ItemDescription 
+                      : <ItemDescription
                           beautify={this.state.beautify} 
                           setSelectedItem={this.setSelectedItem} 
                           selectedItem={this.state.selectedItem} 
