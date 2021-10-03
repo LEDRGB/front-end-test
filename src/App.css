@@ -12,7 +12,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.workpace-container{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
 .app-header {
   background-color: #dae8fc  ;
   margin-top: 2vh;
@@ -27,7 +33,6 @@
   text-align: end;
 }
 .app-header-beauty {
-  background-color: #dae8fc  ;
   margin-top: 2vh;
   margin-left: 1vw;
   margin-right: 1vw;
@@ -39,6 +44,7 @@
   border-radius: 10px;
   border: 1px solid #a8bedf !important;
   text-align: end;
+  background: rgba(218,232,252,0.4);
 }
 
 .beauty-butttons-container{
@@ -70,7 +76,6 @@ img {
 }
 
 .app-body-beauty {
-  background-color: #d5e8d4  ;
   margin-top: 2vh;
   margin-left: 1vw;
   margin-right: 1vw;
@@ -81,6 +86,7 @@ img {
   border: 1px solid #c2dbb7 !important;
   overflow: auto;
   border-radius: 10px;
+  background: rgba(213,232,212,0.6);
 }
 
 .App-item {
@@ -118,7 +124,7 @@ img {
 .body-row{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 95vw;
   height: 30vh;
   margin-top: 7vh;
@@ -164,6 +170,17 @@ img {
   overflow: auto;
 }
 
+.description-container-beauty{
+  background-color: #f2f8f2;
+  border: 1px solid #686f68;
+  width: 20vw;
+  border-radius: 10px;
+  font-size: calc(6px + 1vmin);
+  width: 25vw;
+  height: 25vh;
+  overflow: auto;
+}
+
 .actions-container{
   background-color: #f2f8f2;
   border: 1px solid #686f68;
@@ -175,7 +192,19 @@ img {
   font-size: calc(6px + 2vmin);
   width: 25vw;
   height: 25vh;
-
+}
+.actions-container-beauty{
+  background-color: #f2f8f2;
+  border: 1px solid #686f68;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 20vw;
+  border-radius: 10px;
+  font-size: calc(6px + 2vmin);
+  width: 25vw;
+  height: 25vh;
 }
 .memory-button{
   font-size: calc(3px + 2vmin);
@@ -186,7 +215,18 @@ img {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
 
+.memory-button.beauty{
+  font-size: calc(3px + 2vmin);
+  border: 1px solid #686f68;
+  width: 6vh;
+  height: 6vh;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .breadcrums-container{
@@ -207,20 +247,42 @@ img {
   cursor: pointer;
 }
 
+.color-button-beauty{
+  font-size: calc(3px + 2vmin);
+  display: block;
+  border: 1px solid #686f68;
+  text-align: center;
+  width: 6vh;
+  height: 6vh;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .selectors-row{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 10vw;
-
+  width: 15vw;
 }
+
 
 .item-column{
   display: flex;
+  flex-direction: column;
   height: 52vh;
+  justify-content: space-between;
 }
-
+.words-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50vh;
+  height: 10vh;
+  background-color: #f2f8f2;
+  border-radius: 10px;
+  border: 1px solid #686f68;
+}
 .item-img-container{
   display: flex;
   justify-content: center;
@@ -231,12 +293,40 @@ img {
   border: 1px solid #686f68;
 }
 
+.item-img-container-beauty{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50vh;
+  height: 40vh;
+  background-color: #f2f8f2;
+  border-radius: 10px;
+  border: 1px solid #686f68;
+}
+
 .item-description-container{
   background-color: #d5e8d4  ;
   margin-top: 2vh;
   margin-left: 1vw;
   margin-right: 1vw;
+  width: 95vw;
   height: 82vh;
+  display: flex;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+  border: 1px solid #c2dbb7 !important;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+}
+.item-description-container-beauty{
+  background: rgba(213,232,212,0.6);
+  margin-top: 2vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 87vh;
+  width: 95vw;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   font-size: calc(10px + 2vmin);
@@ -255,7 +345,9 @@ img {
   display: inline-block;
   cursor: pointer;
 }
-
+.cart-button{
+  padding-top: -1vh;
+}
 .selected-button{
   border: 2px solid blue !important;
 }

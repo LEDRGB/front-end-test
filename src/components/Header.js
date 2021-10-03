@@ -58,6 +58,7 @@ export class Header extends React.Component {
                 }}
               />
               {/* <Search handleOnChange={this.props.handleOnSearch}/> */}
+              <div>
               <Tooltip title="Uglify">
                   <Button
                   onClick={() => {
@@ -68,13 +69,12 @@ export class Header extends React.Component {
                   <BrokenImage fontSize="small" />
                 </Button>
               </Tooltip>
-              <div>
                 <Tooltip title="Cart">
-                  <Badge color="secondary" badgeContent={this.props.cart}>
-                    <ShoppingCartIcon />{" "}
-                  </Badge>
+                    <Badge color="secondary" badgeContent={this.props.cart}>
+                      <ShoppingCartIcon />{" "}
+                    </Badge>
                 </Tooltip>
-              </div>
+                </div>
             </div>
         </header> 
       )
