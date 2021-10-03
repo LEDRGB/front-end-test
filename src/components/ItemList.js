@@ -6,6 +6,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import { HideUntilLoaded } from 'react-animation'
 
 import Typography from '@mui/material/Typography';
 
@@ -73,25 +74,28 @@ export class ItemList extends React.Component {
                 return item.brand.toLowerCase().includes(searchText.toLowerCase()) || item.model.toLowerCase().includes(searchText);
             })
         }
-        preapredItems = preapredItems.map((item) => <Card sx={{ width: '22%' }}>
-        <CardActionArea onClick={ ()=> this.props.setSelectedItem(item)}>
-          <CardMedia
-            component="img"
-            height="14"
-            style={styles.media}
-            image={item.imgUrl}
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-                {item.brand  + " " + item.model}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-            {item.price ? item.price + "€" : 'No disponible' }
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+        preapredItems = preapredItems.map((item) => 
+            <HideUntilLoaded  Spinner={() => <div>Loading...</div>} style={{width: '22%'} } animationIn="bounceIn" imageToLoad={item.imgUrl}>
+                <Card sx={{ width: '100%' }}>
+                    <CardActionArea onClick={ ()=> this.props.setSelectedItem(item)}>
+                    <CardMedia
+                        component="img"
+                        height="14"
+                        style={styles.media}
+                        image={item.imgUrl}
+                        alt="green iguana"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {item.brand  + " " + item.model}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                        {item.price ? item.price + "€" : 'No disponible' }
+                        </Typography>
+                    </CardContent>
+                    </CardActionArea>
+                </Card>
+            </HideUntilLoaded>
         );
         for(let i = preapredItems.length % 4; i<4; i++){
             preapredItems.push(<Item key={Math.random()}/>)

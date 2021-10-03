@@ -22,7 +22,6 @@ export class Workspace extends React.Component {
         lastDate = new Date() * 1 
         localStorage.setItem('date', new Date() * 1) 
       }
-      console.log(((new Date() * 1) - lastDate) / 1000)
       if((((new Date() * 1) - lastDate) / 1000)>3600){
         this.setDataShouldRefresh(true)
         localStorage.setItem('date', new Date() * 1) 

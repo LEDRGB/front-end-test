@@ -4,6 +4,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
+import { HideUntilLoaded } from 'react-animation'
+
 
 
 
@@ -75,7 +77,6 @@ export class ItemDescription extends React.Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ selectedItem: data });
-                console.log(data)
             });
     }
 
@@ -152,7 +153,6 @@ export class ItemDescription extends React.Component {
    
     render() {
       const item = this.state.selectedItem
-      //console.log(this.state.selectedItem)     
       return (
         ! this.props.beautify 
             ? <div className="item-description-container">
@@ -205,10 +205,17 @@ export class ItemDescription extends React.Component {
             : <div className="item-description-container-beauty" style={ style }>
                 <div className="item-column">          
                     <div className="item-img-container-beauty">
+                    <HideUntilLoaded   
+                         imageToLoad={item.imgUrl}
+                         Spinner={() => <div>Loading...</div>} 
+                         animationIn="bounceIn"
+                         style={{width: '100%'}}>
+
                         <img 
                             src={item.imgUrl}
                             alt="product-img"
-                        />                          
+                        />     
+                        </HideUntilLoaded>                     
                     </div>
                     <div className="words-container">
                     {this.state.infoToList[this.state.world] && <AnimateOnChange
